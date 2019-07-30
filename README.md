@@ -2,7 +2,7 @@
 
 ##资源使用
 Spring boot https://spring.io/guides
-Spring Mvc https://spring.io.guides/gs/serving-web-content/
+Spring Mvc https://spring.io/guides/gs/serving-web-content/
 
 
 ##工具
