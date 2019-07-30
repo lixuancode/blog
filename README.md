@@ -6,4 +6,4 @@ Spring Mvc https://spring.io/guides/gs/serving-web-content/
 
 
 ##工具
-git&&github https://git-sum.com/download
+git&&github https://git-scm.com/download
