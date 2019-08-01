@@ -2,6 +2,8 @@ package net.blog.w9o.blog.controller;
 
 import net.blog.w9o.blog.dto.AccessTokenDto;
 import net.blog.w9o.blog.dto.GithubUser;
+import net.blog.w9o.blog.mapper.UserMapper;
+import net.blog.w9o.blog.model.User;
 import net.blog.w9o.blog.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 @Controller
 public class AuthorizeController {
@@ -21,9 +26,13 @@ public class AuthorizeController {
     private String clientSecret;
     @Value("${github.redirect.url}")
     private String RedirectUrl;
+    @Autowired
+    private UserMapper userMapper;
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code")String code,
-                           @RequestParam(name="state")String state, HttpServletRequest request)
+                           @RequestParam(name="state")String state,
+                           HttpServletRequest request,
+                           HttpServletResponse response)
     { //RequestParam接收参数
         AccessTokenDto accessTokenDto = new AccessTokenDto();
         accessTokenDto.setClient_id(clientId);
@@ -32,10 +41,21 @@ public class AuthorizeController {
         accessTokenDto.setRedirect_url(RedirectUrl);
         accessTokenDto.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDto);
-        GithubUser user = githubProvider.getUser(accessToken);
-        if(user!=null){
+        GithubUser githubUser = githubProvider.getUser(accessToken);
+        if(githubUser!=null){
             //登录成功写cookie 与 session
-            request.getSession().setAttribute("user",user);
+            //数据库写入信息
+            User user = new User();
+            String token = UUID.randomUUID().toString();
+            user.setToken(token);
+            user.setName(githubUser.getName());
+            user.setAccountId(String.valueOf(githubUser.getId()));//String.valueOf 强制转换
+            user.setGmtCreate(System.currentTimeMillis());
+            user.setGmtModified(user.getGmtCreate());
+            userMapper.insert(user);
+            //cookie
+            response.addCookie(new Cookie("token",token));
+
             return  "redirect:/";//重定向跳转到index页面
 
         }else {
