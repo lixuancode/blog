@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>码聊社区</title>
+    <title>发布话题 - 码聊社区</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="css/community.css"/>
     <script href="js/bootstrap.min.js" type="application/javascript"></script>
 
 </head>
@@ -17,7 +18,7 @@
                 <span class="sr-only">码聊社区</span>
 
             </button>
-            <a class="navbar-brand" href="#">码聊社区</a>
+            <a class="navbar-brand" href="/">码聊社区</a>
         </div>
 
 
@@ -29,6 +30,9 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
+                <li th:if="${session.user !=null}">
+                    <a href="/publish">发布</a>
+                </li>
                 <li class="dropdown" th:if="${session.user !=null}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"th:text="${session.user.getName()}"> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -42,6 +46,44 @@
             </ul>
         </div>
     </div>
+
 </nav>
+<div class="container-fluid main" >
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
+            <hr>
+            <form action="/publish" method="post">
+                <div class="form-group">
+                    <label for="title">问题标题(简单扼要)：</label>
+                    <input type="text" class="form-control" id="title" th:value="${title}" name="title" placeholder="问题标题">
+                </div>
+                <div class="form-group">
+                    <label for="description">问题补充(参照右边提示)：</label>
+                    <textarea name="description" id="description"  th:text="${description}" class="form-control" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="tag">添加标签：</label>
+                    <input type="text" class="form-control"  th:value="${tag}" id="tag" name="tag" placeholder="输入标签,以,分隔">
+                </div>
+                <div class="container-fluid main" >
+                    <div class="row">
+                        <div class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12" th:text="${error}" th:if="${error!=null}"></div>
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" class="btn btn-success bth-publish ">发布问题</button>
+                        </div>
+
+                    </div></div>
+
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <h3>问题发起指南</h3>
+            ·问题标题：请用精简的语言描述您发布的问题，不超过25个字;<br>
+            ·问题补充：详细补充您的问题内容，并确保问题描述清晰直观，并提供一些相关的资料;<br>
+            ·填写标签：添加一个或多个自定义标签，单个标签不超过10个字，用逗号隔开;<br>
+        </div>
+    </div>
+</div>
 </body>
 </html>

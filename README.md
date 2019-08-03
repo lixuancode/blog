@@ -7,7 +7,8 @@
 `Bootstrap` https://v3.bootcss.com/<br>  
 `GitHubApp` https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps<br>  
 `H2DataBase` http://www.h2database.com<br>  
-`flywaydb` https://flywaydb.org/getstarted/firststeps/maven
+`flywaydb` https://flywaydb.org/getstarted/firststeps/maven<br>
+`lombok` https://projectlombok.org/setup/maven
 
 ###工具
 
