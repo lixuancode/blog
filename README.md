@@ -8,7 +8,7 @@
 `GitHubApp` https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps<br>  
 `H2DataBase` http://www.h2database.com<br>  
 `flywaydb` https://flywaydb.org/getstarted/firststeps/maven<br>
-`lombok` https://projectlombok.org/setup/maven
+`lombok` https://projectlombok.org/setup/maven<br>
 
 ###工具
 
