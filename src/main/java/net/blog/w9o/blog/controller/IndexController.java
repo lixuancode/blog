@@ -30,6 +30,7 @@ public class IndexController {
                 if (cookie.getName().equals("token")){
                     String token = cookie.getValue();
                     User user = userMapper.findByToken(token);
+
                     if(user!=null){
                         request.getSession().setAttribute("user",user);
                     }
@@ -38,9 +39,6 @@ public class IndexController {
             }
         }
         List<QuestionDto> questionList = questionService.list();
-        for (QuestionDto questionDto : questionList) {
-            System.out.println(questionDto);
-        }
         model.addAttribute("questions",questionList);
         return "index";
 
