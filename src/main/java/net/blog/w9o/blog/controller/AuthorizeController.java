@@ -5,6 +5,7 @@ import net.blog.w9o.blog.dto.GithubUser;
 import net.blog.w9o.blog.mapper.UserMapper;
 import net.blog.w9o.blog.model.User;
 import net.blog.w9o.blog.provider.GithubProvider;
+import net.blog.w9o.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class AuthorizeController {
     @Value("${github.redirect.url}")
     private String RedirectUrl;
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code")String code,
                            @RequestParam(name="state")String state,
@@ -50,10 +51,8 @@ public class AuthorizeController {
             user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));//String.valueOf 强制转换
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
             user.setAvatarUrl(githubUser.getAvatarUrl());
-            userMapper.insert(user);
+            userService.createUpdate(user);
             //cookie
             response.addCookie(new Cookie("token",token));
 
@@ -63,5 +62,13 @@ public class AuthorizeController {
             //登录失败
             return "redirect:/";//重定向跳转到index页面
         }
+    }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request,HttpServletResponse response){
+            request.getSession().removeAttribute("user");//清空Session
+            Cookie cookie = new Cookie("token", null);
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        return "redirect:/";
     }
 }
