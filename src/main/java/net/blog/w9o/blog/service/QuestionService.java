@@ -94,4 +94,17 @@ public class QuestionService {
         questionDto.setUser(user);
         return questionDto;
     }
+
+    public void createUpdate(Question question) {
+        if (question.getId()==null){
+            //首次创建
+            question.setGmtCreate(System.currentTimeMillis());
+            question.setGmtModified(question.getGmtCreate());
+            questionMapper.create(question);
+        }else{
+            //编辑
+            question.setGmtModified(System.currentTimeMillis());
+            questionMapper.update(question);
+        }
+    }
 }
