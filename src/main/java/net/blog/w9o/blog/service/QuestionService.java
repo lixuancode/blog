@@ -2,6 +2,8 @@ package net.blog.w9o.blog.service;
 
 import net.blog.w9o.blog.dto.PaginationDto;
 import net.blog.w9o.blog.dto.QuestionDto;
+import net.blog.w9o.blog.exception.CustomizeErrorCode;
+import net.blog.w9o.blog.exception.CustomizeException;
 import net.blog.w9o.blog.mapper.QuestionMapper;
 import net.blog.w9o.blog.mapper.UserMapper;
 import net.blog.w9o.blog.model.Question;
@@ -94,6 +96,9 @@ public class QuestionService {
 
     public QuestionDto getById(Integer id) {
         Question question = questionMapper.selectByPrimaryKey(id);
+        if (question==null){
+            throw new CustomizeException(CustomizeErrorCode.QUEATION_NOT_FOUND);
+        }
         QuestionDto questionDto = new QuestionDto();
         BeanUtils.copyProperties(question,questionDto);
         User user = userMapper.selectByPrimaryKey(question.getCreator());
@@ -116,7 +121,10 @@ public class QuestionService {
             updateQuestion.setTag(question.getTag());
             QuestionExample example = new QuestionExample();
             example.createCriteria().andIdEqualTo(question.getId());
-            questionMapper.updateByExampleSelective(updateQuestion, example);
+            int update = questionMapper.updateByExampleSelective(updateQuestion, example);
+            if(update!=1){
+                throw new CustomizeException(CustomizeErrorCode.QUEATION_NOT_FOUND);
+            }
 
         }
     }

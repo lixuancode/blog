@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>码聊社区</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/community.css"/>
+    <link rel="stylesheet" href="/css/user.css"/>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div th:insert="~{navigation::nav}"></div>
+<div class="jumbotron">
+    <h1>error,您访问的页面不存在！</h1>
+    <p th:text="${message}">服务器太累了，要不然稍等在试试！</p>
+    <p><a class="btn btn-primary btn-lg" href="/" role="button">返回首页</a></p>
+</div>
+
+</body>
+</html>
