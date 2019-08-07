@@ -4,6 +4,7 @@ import net.blog.w9o.blog.dto.PaginationDto;
 import net.blog.w9o.blog.dto.QuestionDto;
 import net.blog.w9o.blog.exception.CustomizeErrorCode;
 import net.blog.w9o.blog.exception.CustomizeException;
+import net.blog.w9o.blog.mapper.QuestionExtMapper;
 import net.blog.w9o.blog.mapper.QuestionMapper;
 import net.blog.w9o.blog.mapper.UserMapper;
 import net.blog.w9o.blog.model.Question;
@@ -23,6 +24,8 @@ public class QuestionService {
     private QuestionMapper questionMapper;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
     public PaginationDto list(Integer page, Integer size) {
         Integer totalPage;
         PaginationDto paginationDto = new PaginationDto();
@@ -127,5 +130,12 @@ public class QuestionService {
             }
 
         }
+    }
+
+    public void incView(Integer id) {
+        Question question = new Question();
+        question.setId(id);
+        question.setViewCount(1);
+        questionExtMapper.incView(question);
     }
 }
