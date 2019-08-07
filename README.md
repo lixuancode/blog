@@ -9,9 +9,16 @@
 `H2DataBase` http://www.h2database.com<br>  
 `flywaydb` https://flywaydb.org/getstarted/firststeps/maven<br>
 `lombok` https://projectlombok.org/setup/maven<br>
-`evtools` https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#using-boot-devtools
+`evtools` https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#using-boot-devtools<br>
+`MyBatis` http://www.mybatis.org/generator/configreference/xmlconfig.html
 
 ###工具
 
 `git&&github` https://git-scm.com/download<br>  
 `livereload`http://livereload.com
+
+
+```bash 
+mvn flyway:migrate
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+```
