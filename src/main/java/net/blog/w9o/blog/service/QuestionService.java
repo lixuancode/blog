@@ -58,7 +58,7 @@ public class QuestionService {
         paginationDto.setQuestions(questionDtoList);
         return paginationDto;
     }
-    public PaginationDto list(Integer userId, Integer page, Integer size) {
+    public PaginationDto list(Long userId, Integer page, Integer size) {
         Integer totalPage;
         PaginationDto paginationDto = new PaginationDto();
         QuestionExample questionExample = new QuestionExample();
@@ -97,10 +97,10 @@ public class QuestionService {
         return paginationDto;
     }
 
-    public QuestionDto getById(Integer id) {
+    public QuestionDto getById(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         if (question==null){
-            throw new CustomizeException(CustomizeErrorCode.QUEATION_NOT_FOUND);
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
         QuestionDto questionDto = new QuestionDto();
         BeanUtils.copyProperties(question,questionDto);
@@ -114,6 +114,9 @@ public class QuestionService {
             //首次创建
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
+            question.setLikeCount(0);
+            question.setViewCount(0);
+            question.setCommentCount(0);
             questionMapper.insert(question);
         }else{
             // 更新编辑
@@ -126,13 +129,13 @@ public class QuestionService {
             example.createCriteria().andIdEqualTo(question.getId());
             int update = questionMapper.updateByExampleSelective(updateQuestion, example);
             if(update!=1){
-                throw new CustomizeException(CustomizeErrorCode.QUEATION_NOT_FOUND);
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
 
         }
     }
 
-    public void incView(Integer id) {
+    public void incView(Long id) {
         Question question = new Question();
         question.setId(id);
         question.setViewCount(1);

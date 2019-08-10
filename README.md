@@ -16,6 +16,7 @@
 
 `git&&github` https://git-scm.com/download<br>  
 `livereload`http://livereload.com
+`Postman` https://www.getpostman.com/downloads/
 
 
 ```bash 
