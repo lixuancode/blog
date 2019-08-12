@@ -111,3 +111,21 @@ function collapseComments(e) {
         }
     }
 }
+
+//添加标签
+
+function selectTag(e) {
+    var values = e.getAttribute("data-tag");
+    var previous = $("#tag").val();
+    if (previous.indexOf(values)==-1){
+
+        if (previous){
+            $("#tag").val(previous+","+values);
+        }else {
+            $("#tag").val(values);
+        }
+    }
+}
+function showSelectTag() {
+    $("#select-tag").show();
+}
