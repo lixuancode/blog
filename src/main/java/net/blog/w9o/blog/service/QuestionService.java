@@ -61,7 +61,7 @@ public class QuestionService {
            questionDto.setUser(user);
            questionDtoList.add(questionDto);
         }
-        paginationDto.setQuestions(questionDtoList);
+        paginationDto.setData(questionDtoList);
         return paginationDto;
     }
     public PaginationDto list(Long userId, Integer page, Integer size) {
@@ -99,7 +99,7 @@ public class QuestionService {
             questionDto.setUser(user);
             questionDtoList.add(questionDto);
         }
-        paginationDto.setQuestions(questionDtoList);
+        paginationDto.setData(questionDtoList);
         return paginationDto;
     }
 
