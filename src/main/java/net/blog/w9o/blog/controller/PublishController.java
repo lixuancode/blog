@@ -24,8 +24,13 @@ public class PublishController {
     private QuestionService questionService;
 
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable(name = "id") Long id,Model model){
+    public String edit(@PathVariable(name = "id") Long id,Model model,HttpServletRequest request){
         QuestionDto question = questionService.getById(id);
+        User user = (User) request.getSession().getAttribute("user");
+        if (user==null || question.getCreator()!=user.getId()){
+            return "redirect:/";
+        }
+        System.out.println(question.getCreator());
         model.addAttribute("title",question.getTitle());
         model.addAttribute("description",question.getDescription());
         model.addAttribute("tag",question.getTag());

@@ -60,7 +60,7 @@
                        th:if="${session.user !=null && session.user.id == question.creator}"><span
                             class="glyphicon glyphicon-pencil" aria-hidden="true"> 编辑</span></a>
                 </div>
-                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:if="${session.user !=null && session.user.id == question.creator}">
             </div>
             <!-- 文章回复-->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -114,12 +114,12 @@
                     <div class="media">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object img-rounded " th:src="${question.user.avatarUrl}">
+                                <img class="media-object img-rounded " th:src="${session.user!=null ? session.user.avatarUrl : '/images/UserDefault.png'}">
                             </a>
                         </div>
                         <div class="media-body">
                             <h5 class="media-heading">
-                                <span th:text="${question.user.name}"></span>
+                                <span th:text="${session.user!=null ? session.user.name : '网站游客'}"></span>
                             </h5>
                         </div>
                     </div>
@@ -169,6 +169,6 @@
         </div>
     </div>
 </div>
-
+<div th:insert="~{footer::foot}"></div>
 </body>
 </html>

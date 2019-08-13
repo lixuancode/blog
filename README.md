@@ -10,8 +10,9 @@
 `flywaydb` https://flywaydb.org/getstarted/firststeps/maven<br>
 `lombok` https://projectlombok.org/setup/maven<br>
 `evtools` https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#using-boot-devtools<br>
-`MyBatis` http://www.mybatis.org/generator/configreference/xmlconfig.html
-`Markdown`http://editor.md.ipandao.com/
+`MyBatis` http://www.mybatis.org/generator/configreference/xmlconfig.html<br>
+`Markdown`http://editor.md.ipandao.com/<br>
+`UcloudSdk`https://github.com/ucloud/ufile-sdk-java<br>
 
 ###工具
 

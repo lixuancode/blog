@@ -1,5 +1,6 @@
 body{
    background-color: #efefef;
+    background-image: url("/images/bg.jpg");
 }
 .main{
     background-color: white;
@@ -88,5 +89,9 @@ body{
 }
 .menu .active{
     color: #499Ef3;
+}
+.footer{
+    text-align:center;
+    color: #666;
 }
 
