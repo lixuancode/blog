@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="/css/community.css">
     <link rel="stylesheet" href="/css/user.css"/>
+    <link rel="stylesheet" href="/css/editormd.preview.min.css"/>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/moment.js"></script>
     <script src="/js/community.js"></script>
+    <script src="/js/editormd.min.js" type="application/javascript"></script>
+    <script src="/js/lib/marked.min.js"></script>
+    <script src="/js/lib/prettify.min.js"></script>
 
 </head>
 <body>
@@ -30,7 +34,16 @@
             </span>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--问题内容-->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:text="${question.description}"></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question-view" >
+                        <textarea style="display:none;" th:text="${question.description}"></textarea>
+                </div>
+                <script type="text/javascript">
+                    $(function() {
+                       editormd.markdownToHTML("question-view", {});
+                    });
+                </script>
+
+
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <!--问题标签-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -140,7 +153,7 @@
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>学习交流Java知识</h4>
-                <img class="img-thumbnail question-weChat" src="/img/lx.png" alt="微信：AATMMT QQ：50828441">
+                <img class="img-thumbnail question-weChat" src="/images/lx.png" alt="微信：AATMMT QQ：50828441">
             </div>
 
             <!--相关问题-->
