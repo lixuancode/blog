@@ -1,5 +1,6 @@
 package net.blog.w9o.blog.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import net.blog.w9o.blog.dto.AccessTokenDto;
 import net.blog.w9o.blog.dto.GithubUser;
 import net.blog.w9o.blog.mapper.UserMapper;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 @Controller
+@Slf4j
 public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
@@ -58,6 +60,7 @@ public class AuthorizeController {
             return  "redirect:/";//重定向跳转到index页面
 
         }else {
+            log.error("callback get github error,{}",githubUser);
             //登录失败
             return "redirect:/";//重定向跳转到index页面
         }
