@@ -4,7 +4,7 @@ import lombok.Data;
 import net.blog.w9o.blog.model.User;
 
 @Data
-public class    QuestionDto {
+public class  QuestionDto {
     private Long id;
     private String title;
     private String description;

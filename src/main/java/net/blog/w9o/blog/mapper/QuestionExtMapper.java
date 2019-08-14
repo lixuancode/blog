@@ -13,5 +13,6 @@ public interface QuestionExtMapper {
     Integer countBySearch(QuestionQueryDto questionQueryDto);
 
     List<Question> selectBySearch(QuestionQueryDto questionQueryDto);
+    List<Question> selectHotQuestion();
 
 }

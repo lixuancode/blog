@@ -60,5 +60,9 @@
         order by gmt_create desc limit #{page},#{size}
     </select>
 
+    <select id="selectHotQuestion" parameterType="net.blog.w9o.blog.dto.QuestionQueryDto" resultMap="BaseResultMap">
+        select TOP 10 * from QUESTION  order by VIEW_COUNT desc;
+    </select>
+
 
 </mapper>

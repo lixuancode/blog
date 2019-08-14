@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class QuestionService {
@@ -116,7 +115,16 @@ public class QuestionService {
         paginationDto.setData(questionDtoList);
         return paginationDto;
     }
-
+    public List<QuestionDto> hot(){
+        List<Question> questions = questionExtMapper.selectHotQuestion();
+        List<QuestionDto> questionDtoList = new ArrayList<>();
+        for (Question question : questions) {
+            QuestionDto questionDto = new QuestionDto();
+            BeanUtils.copyProperties(question,questionDto);
+            questionDtoList.add(questionDto);
+        }
+        return questionDtoList;
+    }
     public QuestionDto getById(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         if (question==null){

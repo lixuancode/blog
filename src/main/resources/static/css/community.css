@@ -10,6 +10,12 @@ body{
     float: right;
     margin-bottom: 15px;
 }
+.index-hot-question{
+    margin-top: 10px;
+}
+.index-hot{
+    font-size: 16px;
+}
 .question-title{
     margin-top: 25px;
 }.question-tag{

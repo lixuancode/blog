@@ -19,7 +19,7 @@ public class Hot {
     private QuestionMapper questionMapper;
     @Autowired
     private HotTagche hotTagche;
-    @Scheduled(fixedRate = 20000)
+    @Scheduled(fixedRate = 1000*60*3)
     public void reportCurrentTime(){
         int offset = 0;
         int limit = 20;
