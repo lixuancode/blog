@@ -31,7 +31,7 @@ public class QuestionService {
     private UserMapper userMapper;
     @Autowired
     private QuestionExtMapper questionExtMapper;
-    public PaginationDto list(String search,Integer page, Integer size) {
+    public PaginationDto list(String search, String tag, Integer page, Integer size) {
 
         if (StringUtils.isNotBlank(search)){
             String[] tags = StringUtils.split(search, " ");
@@ -43,6 +43,7 @@ public class QuestionService {
         PaginationDto paginationDto = new PaginationDto();
         QuestionQueryDto questionQueryDto = new QuestionQueryDto();
         questionQueryDto.setSearch(search);
+        questionQueryDto.setTag(tag);
         Integer totalCount = questionExtMapper.countBySearch(questionQueryDto);
         if (totalCount%size==0){
             totalPage=totalCount/size;
