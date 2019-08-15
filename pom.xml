@@ -114,7 +114,7 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>5.2.4</version>
 				<configuration>
-					<url>jdbc:mysql://cdb-74en1uw6.bj.tencentcdb.com:3306/maliao</url>
+					<url>jdbc:mysql://cdb-74en1uw6.bj.tencentcdb.com:10174/maliao</url>
 					<user>data</user>
 					<password>maliao888</password>
 				</configuration>
