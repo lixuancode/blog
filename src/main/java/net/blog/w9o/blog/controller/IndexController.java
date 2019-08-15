@@ -30,12 +30,12 @@ public class IndexController {
                         ) {
         PaginationDto pagination = questionService.list(search,tag,page,size);
         List<String> tags = hotTagche.getHots();
-        List<QuestionDto> hot = hotTagche.getHotsQuetion();
+       // List<QuestionDto> hot = hotTagche.getHotsQuetion();
         model.addAttribute("pagination",pagination);
         model.addAttribute("search",search);
         model.addAttribute("tag",tag);
         model.addAttribute("tags",tags);
-        model.addAttribute("hotQuestions",hot);
+        //model.addAttribute("hotQuestions",hot);
         return "index";
 
 
