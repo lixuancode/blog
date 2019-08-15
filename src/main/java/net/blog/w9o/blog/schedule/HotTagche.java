@@ -41,6 +41,6 @@ public class HotTagche {
             poll = priorityQueue.poll();
         }
         hots=sortedTags;
-        hotsQuetion  = questionService.hot();
+       // hotsQuetion  = questionService.hot();
     }
 }
