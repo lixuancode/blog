@@ -61,6 +61,14 @@
 			<version>1.2.56</version>
 		</dependency>
 
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.16</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -106,11 +114,18 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>5.2.4</version>
 				<configuration>
-					<url>jdbc:h2:~/maliaodatabase</url>
+					<url>jdbc:mysql://cdb-74en1uw6.bj.tencentcdb.com:3306/maliao</url>
 					<user>data</user>
-					<password>data123</password>
+					<password>maliao888</password>
 				</configuration>
 				<dependencies>
+
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>8.0.16</version>
+					</dependency>
+
 					<dependency>
 						<groupId>com.h2database</groupId>
 						<artifactId>h2</artifactId>
