@@ -74,6 +74,9 @@ public class QuestionService {
            questionDto.setUser(user);
            questionDtoList.add(questionDto);
         }
+        for (QuestionDto questionDto : questionDtoList) {
+            System.out.println(questionDto);
+        }
         paginationDto.setData(questionDtoList);
         return paginationDto;
     }
