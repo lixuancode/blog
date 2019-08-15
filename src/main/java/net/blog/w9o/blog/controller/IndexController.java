@@ -34,6 +34,7 @@ public class IndexController {
         model.addAttribute("pagination",pagination);
         model.addAttribute("search",search);
         model.addAttribute("tag",tag);
+        System.out.println(pagination);
         //model.addAttribute("tags",tags);
         //model.addAttribute("hotQuestions",hot);
         return "index";
