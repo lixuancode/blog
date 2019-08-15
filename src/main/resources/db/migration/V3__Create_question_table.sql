@@ -1,16 +1,16 @@
-create table question
+CREATE TABLE question
 (
-    id int auto_increment,
-    title varchar(50),
-    description text,
-    gmt_create bigint,
-    gmt_modified bigint,
-    creator int,
-    comment_count int default 0,
-    view_count int default 0,
-    like_count int default 0,
-    tag varchar(256),
-    constraint question_pk
-        primary key (id)
+    ID INT AUTO_INCREMENT,
+    TITLE VARCHAR(50),
+    DESCRIPTION TEXT,
+    GMT_CREATE BIGINT,
+    GMT_MODIFIED BIGINT,
+    CREATOR INT,
+    COMMENT_COUNT INT DEFAULT 0,
+    VIEW_COUNT INT DEFAULT 0,
+    LIKE_COUNT INT DEFAULT 0,
+    TAG VARCHAR(256),
+    CONSTRAINT QUESTION_PK
+        PRIMARY KEY (ID)
 );
 

@@ -1,2 +1,2 @@
-alter table question modify creator bigint not null ;
-alter table comment modify commentator bigint not null ;
+ALTER TABLE question MODIFY CREATOR BIGINT NOT NULL ;
+ALTER TABLE comment MODIFY COMMENTATOR BIGINT NOT NULL ;

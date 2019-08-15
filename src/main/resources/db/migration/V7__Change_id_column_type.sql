@@ -1,2 +1,2 @@
-alter table question modify id bigint not null ;
-alter table user modify id bigint not null ;
+ALTER TABLE question MODIFY ID BIGINT NOT NULL ;
+ALTER TABLE user MODIFY ID BIGINT NOT NULL ;
