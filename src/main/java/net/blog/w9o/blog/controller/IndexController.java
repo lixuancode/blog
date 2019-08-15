@@ -29,14 +29,14 @@ public class IndexController {
                         @RequestParam(name = "tag",required = false)String tag
                         ) {
         PaginationDto pagination = questionService.list(search,tag,page,size);
-        //List<String> tags = hotTagche.getHots();
-       // List<QuestionDto> hot = hotTagche.getHotsQuetion();
+        List<String> tags = hotTagche.getHots();
+       List<QuestionDto> hot = hotTagche.getHotsQuetion();
         model.addAttribute("pagination",pagination);
         model.addAttribute("search",search);
         model.addAttribute("tag",tag);
         System.out.println(pagination);
-        //model.addAttribute("tags",tags);
-        //model.addAttribute("hotQuestions",hot);
+        model.addAttribute("tags",tags);
+        model.addAttribute("hotQuestions",hot);
         return "index";
 
 
