@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @MapperScan("net.blog.w9o.blog.mapper")
-//git@EnableScheduling
+@EnableScheduling
 public class BlogApplication {
 
     public static void main(String[] args) {
